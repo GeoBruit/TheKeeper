@@ -5,10 +5,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.thekeeper.model.User
+import com.example.thekeeper.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -16,6 +18,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordInput: EditText //TODO Check to see if I can make it password or smth
     private lateinit var loginButton: Button
     private lateinit var backButton: Button
+
+    //for the db
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,22 +59,31 @@ class LoginActivity : AppCompatActivity() {
         val password = passwordInput.text.toString().trim()
 
         try{
+
+            // Check for empty input
             if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return
             }
 
-            //TODO this is to simulate a log in activity for now
-            if (email == "test@example.com" && password == "password123") {
-                Toast.makeText(this, "User Logged in successfully", Toast.LENGTH_SHORT).show()
-                finish()
-            }else{
-                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+            // Use ViewModel to query the database
+            loginViewModel.loginUser(email, password) { user ->
+                if (user != null) {
+                    // User found, login successful
+                    Toast.makeText(this, "Welcome, ${user.name}!", Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    // User not found, login failed
+                    Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                }
             }
 
 
         }catch (e: IllegalArgumentException){
             Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
-        }
+        } catch (e: Exception) {
+        // Handle unexpected runtime errors
+        Toast.makeText(this, "An unexpected error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+    }
     }
 }

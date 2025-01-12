@@ -1,9 +1,13 @@
 package com.example.thekeeper.model
 
 import android.provider.ContactsContract.CommonDataKinds.Email
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "users") //Entity name in the db
 class User (
 
+    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Auto-incremented primary key
     var name : String,
     var email: String,
     var password: String
