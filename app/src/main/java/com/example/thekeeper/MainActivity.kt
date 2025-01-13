@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var registerButton: Button
     private lateinit var loginButton: Button
 
+    //TODO this is just for testing, will delete after
+    private lateinit var seeBook : Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,17 +35,25 @@ class MainActivity : AppCompatActivity() {
         // Initialize buttons
         registerButton = findViewById(R.id.registerButton)
         loginButton = findViewById(R.id.loginButton)
+        seeBook = findViewById(R.id.seeBook)
 
     }
 
     fun setupListeners() {
         // Set up button click listeners
         registerButton.setOnClickListener {
+            //set up intent for the view
             val intent = Intent(this, RegisterActivity::class.java)
+            //star the new activity
             startActivity(intent)
         }
         loginButton.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        seeBook.setOnClickListener{
+            val intent = Intent(this, BookActivity::class.java)
             startActivity(intent)
         }
 
