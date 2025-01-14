@@ -7,11 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.thekeeper.SearchActivity
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var registerButton: Button
     private lateinit var loginButton: Button
+    private lateinit var searchButton: Button
 
     //TODO this is just for testing, will delete after
     private lateinit var seeBook : Button
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         registerButton = findViewById(R.id.registerButton)
         loginButton = findViewById(R.id.loginButton)
         seeBook = findViewById(R.id.seeBook)
+        searchButton = findViewById(R.id.search)
 
     }
 
@@ -54,6 +57,11 @@ class MainActivity : AppCompatActivity() {
 
         seeBook.setOnClickListener{
             val intent = Intent(this, BookActivity::class.java)
+            startActivity(intent)
+        }
+
+        searchButton.setOnClickListener{
+            val intent = Intent(this, SearchActivity::class.java)
             startActivity(intent)
         }
 

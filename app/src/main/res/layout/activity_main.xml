@@ -60,4 +60,17 @@
         android:layout_marginTop="24dp"
         tools:ignore="MissingConstraints" />
 
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:padding="16dp"
+        android:backgroundTint="#70FFFFFF"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        tools:ignore="MissingConstraints" />
+
 </LinearLayout>
