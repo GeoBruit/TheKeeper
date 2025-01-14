@@ -22,19 +22,28 @@ class SearchActivity : AppCompatActivity() {
         BookViewModelFactory(AppDatabase.getDatabase(this).bookDao())
     }
 
+    //activity_search
     private lateinit var adapter: BookAdapter
     private lateinit var bookRecyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
 
+    //book_item
+
+    private lateinit var addButton: Button;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        // Initialize UI Components
+        // Initialize Search_activity Components
         bookRecyclerView = findViewById(R.id.bookRecyclerView)
         searchEditText = findViewById(R.id.searchEditText)
         searchButton = findViewById(R.id.searchButton)
+
+        //item_book components
+
+
 
         // Set up RecyclerView
         adapter = BookAdapter(emptyList()) { book ->

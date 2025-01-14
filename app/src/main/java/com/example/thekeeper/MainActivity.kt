@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var registerButton: Button
     private lateinit var loginButton: Button
     private lateinit var searchButton: Button
+    private lateinit var homePage : Button
 
     //TODO this is just for testing, will delete after
     private lateinit var seeBook : Button
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.loginButton)
         seeBook = findViewById(R.id.seeBook)
         searchButton = findViewById(R.id.search)
+        homePage = findViewById(R.id.homePage)
 
     }
 
@@ -62,6 +64,11 @@ class MainActivity : AppCompatActivity() {
 
         searchButton.setOnClickListener{
             val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        homePage.setOnClickListener{
+            val intent = Intent(this, HomePageActivity::class.java)
             startActivity(intent)
         }
 

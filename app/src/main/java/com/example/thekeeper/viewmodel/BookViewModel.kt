@@ -70,6 +70,8 @@ class BookViewModel(private val bookDao: BookDao) : ViewModel() {
         }
     }
 
+
+
     //Data simulation for debug
     //TODO delete later
 //    fun simulateData() {

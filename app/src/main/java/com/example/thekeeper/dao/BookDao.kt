@@ -13,4 +13,7 @@ interface BookDao {
 
     @Query("SELECT * FROM books")
     suspend fun getAllBooks(): List<Book>
+
+    @Query("SELECT * FROM books WHERE id = :bookId")
+    fun getBookById(bookId: String): Book?
 }
