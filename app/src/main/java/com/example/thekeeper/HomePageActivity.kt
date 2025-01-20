@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thekeeper.adapter.LibraryBookAdapter
@@ -26,12 +27,15 @@ class HomePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
+
         // Initialize RecyclerView
         bookRecyclerView = findViewById(R.id.bookRecyclerView)
         bookAdapter = LibraryBookAdapter { book ->
             navigateToSingleBookView(book)
         }
-        bookRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        // Set up GridLayoutManager with 2 columns
+        bookRecyclerView.layoutManager = GridLayoutManager(this, 2)
         bookRecyclerView.adapter = bookAdapter
 
         // Observe library books from ViewModel

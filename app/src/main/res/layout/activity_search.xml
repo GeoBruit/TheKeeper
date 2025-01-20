@@ -6,12 +6,24 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title (Optional) -->
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/round_btn"
+        android:scaleType="fitCenter"
+        android:src="@drawable/back"
+        />
+
+
+
     <TextView
         android:id="@+id/searchTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search for Books"
+        android:text="@string/search_text"
         android:textSize="24sp"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="16dp"

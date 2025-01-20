@@ -1,10 +1,12 @@
 package com.example.thekeeper
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +29,7 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var bookRecyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
+    private lateinit var backButton: ImageButton
 
     //book_item
 
@@ -40,6 +43,8 @@ class SearchActivity : AppCompatActivity() {
         bookRecyclerView = findViewById(R.id.bookRecyclerView)
         searchEditText = findViewById(R.id.searchEditText)
         searchButton = findViewById(R.id.searchButton)
+        backButton = findViewById(R.id.backButton)
+
 
         //item_book components
 
@@ -75,11 +80,11 @@ class SearchActivity : AppCompatActivity() {
             }
         }
 
-//        searchButton.setOnClickListener {
-//            // Simulate data instead of making an API call
-//            bookViewModel.simulateData()
-//            Toast.makeText(this, "Simulated data loaded", Toast.LENGTH_SHORT).show()
-//        }
+
+        //back button will close the activity
+        backButton.setOnClickListener{
+            finish()
+        }
 
     }
 }

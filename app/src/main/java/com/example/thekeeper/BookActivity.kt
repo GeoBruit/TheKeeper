@@ -3,6 +3,7 @@ package com.example.thekeeper
 import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -16,7 +17,7 @@ class BookActivity : AppCompatActivity() {
     private lateinit var title: TextView
     private lateinit var description : TextView
     private lateinit var publishedDate : TextView //TODO might change to date type after
-    private lateinit var backButton : Button
+    private lateinit var backButton : ImageButton
     private lateinit var addNoteButton: Button
     private lateinit var seeNotesButton: Button
     private lateinit var coverPage: ImageView
