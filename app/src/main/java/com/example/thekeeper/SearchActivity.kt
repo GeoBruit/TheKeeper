@@ -17,6 +17,7 @@ import com.example.thekeeper.data.AppDatabase
 import com.example.thekeeper.viewmodel.BookViewModel
 import com.example.thekeeper.viewmodel.BookViewModelFactory
 import com.example.thekeeper.adapter.BookAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SearchActivity : AppCompatActivity() {
 
@@ -29,7 +30,6 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var bookRecyclerView: RecyclerView
     private lateinit var searchEditText: EditText
     private lateinit var searchButton: Button
-    private lateinit var backButton: ImageButton
 
     //book_item
 
@@ -43,7 +43,6 @@ class SearchActivity : AppCompatActivity() {
         bookRecyclerView = findViewById(R.id.bookRecyclerView)
         searchEditText = findViewById(R.id.searchEditText)
         searchButton = findViewById(R.id.searchButton)
-        backButton = findViewById(R.id.backButton)
 
 
         //item_book components
@@ -81,9 +80,41 @@ class SearchActivity : AppCompatActivity() {
         }
 
 
-        //back button will close the activity
-        backButton.setOnClickListener{
-            finish()
+
+        //navbar
+
+        //init the navbar
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        //Highlight the current item
+
+        bottomNavigationView.selectedItemId = R.id.nav_search
+
+        //Nav item clicks
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_home ->{
+                    startActivity(Intent(this, HomePageActivity::class.java))
+                    true
+                }
+                R.id.nav_search ->{
+                    startActivity(Intent(this, SearchActivity::class.java))
+                    true
+
+                    //already on search
+                    true
+                }
+                R.id.nav_logout ->{
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.backButton->{
+                    startActivity(Intent(this, HomePageActivity::class.java))
+                    true
+                }
+                else -> false
+            }
         }
 
     }

@@ -3,19 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/bg1"
+    >
 
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_btn"
-        android:scaleType="fitCenter"
-        android:src="@drawable/back"
-        />
 
 
 
@@ -27,7 +21,8 @@
         android:textSize="24sp"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="16dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
 
     <!-- Input for Search Query -->
     <EditText
@@ -36,7 +31,9 @@
         android:layout_height="wrap_content"
         android:hint="Enter book title or author"
         android:padding="12dp"
-
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:shadowColor="@color/white"
         android:layout_marginBottom="8dp" />
 
     <!-- Search Button -->
@@ -53,16 +50,27 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:visibility="visible"
         tools:listitem="@layout/item_book" />
 
     <ListView
         android:id="@+id/bookListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:dividerHeight="1dp"
         android:divider="@android:color/darker_gray" />
 
+<!--    navbar-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_dynamic_secondary70"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white" />
 
 </LinearLayout>

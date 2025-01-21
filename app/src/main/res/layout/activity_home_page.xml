@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/myColor"
+    >
 
     <TextView
         android:id="@+id/homePageTitle"
@@ -15,7 +17,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="16dp"
+        android:textColor="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookRecyclerView"
@@ -23,13 +26,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="8dp"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/material_dynamic_secondary70"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white" />

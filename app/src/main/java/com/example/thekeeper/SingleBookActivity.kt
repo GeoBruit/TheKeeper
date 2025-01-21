@@ -1,14 +1,17 @@
 package com.example.thekeeper
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.thekeeper.data.AppDatabase
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class SingleBookActivity : AppCompatActivity() {
 
@@ -40,5 +43,43 @@ class SingleBookActivity : AppCompatActivity() {
                 .into(bookThumbnailImageView)
         } else {
             bookThumbnailImageView.setImageResource(R.drawable.placeholder_book)
-        }}
-}
+        }
+
+        //NavBar
+
+
+        //init the navbar
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        //Highlight the current item
+
+        bottomNavigationView.selectedItemId = 0
+        //Nav item clicks
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_home ->{
+                    //already on home
+                    startActivity(Intent(this, HomePageActivity::class.java))
+                    true
+                }
+                R.id.nav_search ->{
+                    startActivity(Intent(this, SearchActivity::class.java))
+                    true
+                }
+                R.id.nav_logout ->{
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.backButton->{
+                    startActivity(Intent(this, HomePageActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+
+    }
+
