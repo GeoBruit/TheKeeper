@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         getComponents()
         setupListeners()
+        showWelcomeDialog()
     }
 
     fun getComponents(){
@@ -73,6 +75,18 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun showWelcomeDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Hey user (Jimi)!")
+        builder.setMessage("App is still a prototype and far from what what supposed," +
+                " some buttons are here just for testing and debugging perpouses, Enjoy!")
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss() // Close the dialog when "OK" is pressed
+        }
+        builder.setCancelable(false) // Prevent dialog dismissal by tapping outside
+        builder.show()
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.thekeeper
 
 
+import androidx.lifecycle.ViewModel
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.thekeeper.dao.UserDao
@@ -55,4 +56,54 @@ class UserTest {
         assertEquals("Johny", retrievedUser?.name)
         assertEquals("johny@test.com", retrievedUser?.email)
     }
+
+    @Test
+    fun checkUserIsDeleted() = runBlocking {
+        // Insert a user
+        val user = User(30, "Boby", "bob@test.com", "password123")
+        userDao.insertUser(user)
+
+        // Delete the user
+        userDao.deleteUser(user)
+
+        // Try retrieving the deleted user
+        val retrievedUser = userDao.loginUser("bob@test.com", "password123")
+
+        // Verify the user no longer exists
+        assertEquals(null, retrievedUser)
+    }
+
+
+    @Test
+    fun checkLoginFailsWithInvalidCredentials() = runBlocking {
+        // Insert a user
+        val user = User(50, "Emma", "emma@test.com", "password123")
+        userDao.insertUser(user)
+
+        // Try logging in with incorrect credentials
+        val retrievedUser = userDao.loginUser("emma@test.com", "wrongpassword")
+
+        // Verify the user is not retrieved
+        assertEquals(null, retrievedUser)
+    }
+
+    @Test
+    fun checkUserIsUpdated() = runBlocking {
+        // Insert a user
+        val user = User(20, "Alice", "alice@test.com", "password123")
+        userDao.insertUser(user)
+
+        // Update the user's details
+        val updatedUser = User(20, "Alice Updated", "alice@test.com", "newpassword456")
+        userDao.updateUser(updatedUser)
+
+        // Retrieve the updated user
+        val retrievedUser = userDao.loginUser("alice@test.com", "newpassword456")
+
+        // Verify the updates
+        assertEquals("Alice Updated", retrievedUser?.name)
+        assertEquals("alice@test.com", retrievedUser?.email)
+    }
+
+
 }

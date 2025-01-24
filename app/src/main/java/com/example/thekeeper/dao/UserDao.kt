@@ -2,8 +2,10 @@ package com.example.thekeeper.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.thekeeper.model.User
 
 @Dao
@@ -18,4 +20,9 @@ interface UserDao {
     @Query("SELECT * FROM users")
     fun getAllUsers(): LiveData<List<User>>
 
+    @Delete
+    suspend fun deleteUser(user: User)
+
+    @Update
+    suspend fun updateUser(user: User)
 }
